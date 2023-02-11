@@ -326,6 +326,11 @@ class VOLDOR_SLAM:
                     r_quat = r.as_quat()
                     t = self.frames[fid].Tcw[:3,3]
                     f.write(f'{t[2]} {t[0]} {t[1]} {r_quat[2]} {r_quat[0]} {r_quat[1]} {r_quat[3]}\n')
+                elif format == 'TUM':
+                    r = Rot.from_matrix(self.frames[fid].Tcw[:3,:3])
+                    r_quat = r.as_quat()
+                    t = self.frames[fid].Tcw[:3,3]
+                    f.write(f'{t[0]} {t[1]} {t[2]} {r_quat[0]} {r_quat[1]} {r_quat[2]} {r_quat[3]}\n')
         print(f'Camera poses saved to {file_path} with {format} format')
 
     def save_depth_maps(self, save_dir='./depths', zfill=6):
