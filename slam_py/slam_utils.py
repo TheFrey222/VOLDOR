@@ -13,6 +13,8 @@ def geometry_check(kp1, des1, kp2, des2):
     pts1 = np.array(pts1, np.float32)
     pts2 = np.array(pts2, np.float32)
     F, mask = cv2.findFundamentalMat(pts1,pts2,cv2.FM_RANSAC)
+    if mask is None:
+        return 0
     return (2*np.sum(mask)) / (len(kp1) + len(kp2))
 
 def eval_covisibility(depth, Tc1c2, K, mask=None, stride=4):

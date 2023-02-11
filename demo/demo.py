@@ -80,6 +80,6 @@ if __name__ == '__main__':
 
     # save poses and depths
     if opt.save_poses is not None:
-        slam.save_poses(opt.save_poses, format='KITTI')
+        slam.save_poses(opt.save_poses, format='TUM')
     if opt.save_depths is not None:
         slam.save_depth_maps(opt.save_depths)
